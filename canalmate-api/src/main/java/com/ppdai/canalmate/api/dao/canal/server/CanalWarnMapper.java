@@ -1,23 +1,22 @@
 package com.ppdai.canalmate.api.dao.canal.server;
 
 import org.apache.ibatis.annotations.Mapper;
-
 import com.ppdai.canalmate.api.model.canal.server.CanalWarn;
 
 @Mapper
 public interface CanalWarnMapper {
-    int deleteByPrimaryKey(Long id);
+  int deleteByPrimaryKey(Long id);
 
-    int insert(CanalWarn record);
-    
-    //新加的方法，不对isactive做insert
-    int insertDefault(CanalWarn record);
+  int insert(CanalWarn record);
 
-    int insertSelective(CanalWarn record);
+  // 新加的方法，不对isactive做insert
+  int insertDefault(CanalWarn record);
 
-    CanalWarn selectByPrimaryKey(Long id);
+  int insertSelective(CanalWarn record);
 
-    int updateByPrimaryKeySelective(CanalWarn record);
+  CanalWarn selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKey(CanalWarn record);
+  int updateByPrimaryKeySelective(CanalWarn record);
+
+  int updateByPrimaryKey(CanalWarn record);
 }

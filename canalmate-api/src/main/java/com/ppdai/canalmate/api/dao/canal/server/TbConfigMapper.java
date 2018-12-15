@@ -1,22 +1,21 @@
 package com.ppdai.canalmate.api.dao.canal.server;
 
 import org.apache.ibatis.annotations.Mapper;
-
 import com.ppdai.canalmate.api.model.canal.server.TbConfig;
 
 @Mapper
 public interface TbConfigMapper {
-    int deleteByPrimaryKey(Integer pkConfigId);
+  int deleteByPrimaryKey(Integer pkConfigId);
 
-    int insert(TbConfig record);
+  int insert(TbConfig record);
 
-    int insertSelective(TbConfig record);
+  int insertSelective(TbConfig record);
 
-    TbConfig selectByPrimaryKey(Integer pkConfigId);
-    
-    TbConfig selectByConfigName(String configName);
+  TbConfig selectByPrimaryKey(Integer pkConfigId);
 
-    int updateByPrimaryKeySelective(TbConfig record);
+  TbConfig selectByConfigName(String configName);
 
-    int updateByPrimaryKey(TbConfig record);
+  int updateByPrimaryKeySelective(TbConfig record);
+
+  int updateByPrimaryKey(TbConfig record);
 }

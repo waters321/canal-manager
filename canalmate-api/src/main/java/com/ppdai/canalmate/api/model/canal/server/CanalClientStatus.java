@@ -1,92 +1,93 @@
 package com.ppdai.canalmate.api.model.canal.server;
 
-/*不对应任何表，只是包装对象，给前端展示
+/*
+ * 不对应任何表，只是包装对象，给前端展示
  * 
- * */
-public class CanalClientStatus{
+ */
+public class CanalClientStatus {
 
-	private String canalServerName;
-    
-    private String destinationName;
+  private String canalServerName;
 
-    private String clientAddressPort;
-    
-    private String mysqlAddress;
+  private String destinationName;
 
-	private String color;
-	
-	private String canalClientStatusCode;
-    
-    private String comment;
-    
-    private String clientName;
-    
-    public String getClientName() {
-		return clientName;
-	}
+  private String clientAddressPort;
 
-	public void setClientName(String clientName) {
-		this.clientName = clientName;
-	}
+  private String mysqlAddress;
 
-	public String getCanalClientStatusCode() {
-		return canalClientStatusCode;
-	}
+  private String color;
 
-	public void setCanalClientStatusCode(String canalClientStatusCode) {
-		this.canalClientStatusCode = canalClientStatusCode;
-	}
+  private String canalClientStatusCode;
 
-    
-    public String getMysqlAddress() {
-    	return mysqlAddress;
-    }
-    
-    public void setMysqlAddress(String mysqlAddress) {
-    	this.mysqlAddress = mysqlAddress;
-    }
+  private String comment;
 
-	public String getCanalServerName() {
-		return canalServerName;
-	}
+  private String clientName;
 
-	public void setCanalServerName(String canalServerName) {
-		this.canalServerName = canalServerName;
-	}
+  public String getClientName() {
+    return clientName;
+  }
 
-	public String getDestinationName() {
-		return destinationName;
-	}
+  public void setClientName(String clientName) {
+    this.clientName = clientName;
+  }
 
-	public void setDestinationName(String destinationName) {
-		this.destinationName = destinationName;
-	}
+  public String getCanalClientStatusCode() {
+    return canalClientStatusCode;
+  }
 
-	public String getClientAddressPort() {
-		return clientAddressPort;
-	}
+  public void setCanalClientStatusCode(String canalClientStatusCode) {
+    this.canalClientStatusCode = canalClientStatusCode;
+  }
 
-	public void setClientAddressPort(String clientAddressPort) {
-		this.clientAddressPort = clientAddressPort;
-	}
 
-	public String getColor() {
-		return color;
-	}
+  public String getMysqlAddress() {
+    return mysqlAddress;
+  }
 
-	public void setColor(String color) {
-		this.color = color;
-	}
+  public void setMysqlAddress(String mysqlAddress) {
+    this.mysqlAddress = mysqlAddress;
+  }
 
-	public String getComment() {
-		return comment;
-	}
+  public String getCanalServerName() {
+    return canalServerName;
+  }
 
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-    
-    
+  public void setCanalServerName(String canalServerName) {
+    this.canalServerName = canalServerName;
+  }
+
+  public String getDestinationName() {
+    return destinationName;
+  }
+
+  public void setDestinationName(String destinationName) {
+    this.destinationName = destinationName;
+  }
+
+  public String getClientAddressPort() {
+    return clientAddressPort;
+  }
+
+  public void setClientAddressPort(String clientAddressPort) {
+    this.clientAddressPort = clientAddressPort;
+  }
+
+  public String getColor() {
+    return color;
+  }
+
+  public void setColor(String color) {
+    this.color = color;
+  }
+
+  public String getComment() {
+    return comment;
+  }
+
+  public void setComment(String comment) {
+    this.comment = comment;
+  }
+
+
 
 }
 

@@ -1,6 +1,5 @@
 package com.ppdai.canalmate.api.entity.dto;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -8,152 +7,154 @@ import java.util.List;
  */
 public class MenuDto extends BaseDto {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 4744692506975402047L;
-    private Integer pkMenuId;
-    private String menuCode;
-    private String menuName;
-    private String superiorMenu;
-    private String menuUrl;
-    private String menuIcon;
-	private Integer menuSerial;
-    private String createUser;
-    private String updateUser;
-    private String insertTime;
-    private String updateTime;
-    private Byte isActive;
-    private List<MenuDto> children;
+  /**
+   *
+   */
+  private static final long serialVersionUID = 4744692506975402047L;
+  private Integer pkMenuId;
+  private String menuCode;
+  private String menuName;
+  private String superiorMenu;
+  private String menuUrl;
+  private String menuIcon;
+  private Integer menuSerial;
+  private String createUser;
+  private String updateUser;
+  private String insertTime;
+  private String updateTime;
+  private Byte isActive;
+  private List<MenuDto> children;
 
-    public String getMenuCode() {
-        return menuCode;
-    }
+  public String getMenuCode() {
+    return menuCode;
+  }
 
-    public void setMenuCode(String menuCode) {
-        this.menuCode = menuCode;
-    }
+  public void setMenuCode(String menuCode) {
+    this.menuCode = menuCode;
+  }
 
-    public String getMenuName() {
-        return menuName;
-    }
+  public String getMenuName() {
+    return menuName;
+  }
 
-    public void setMenuName(String menuName) {
-        this.menuName = menuName;
-    }
+  public void setMenuName(String menuName) {
+    this.menuName = menuName;
+  }
 
-    public String getMenuIcon() {
-		return menuIcon;
-	}
+  public String getMenuIcon() {
+    return menuIcon;
+  }
 
-	public void setMenuIcon(String menuIcon) {
-		this.menuIcon = menuIcon;
-	}
+  public void setMenuIcon(String menuIcon) {
+    this.menuIcon = menuIcon;
+  }
 
-    
-    public String getSuperiorMenu() {
-        return superiorMenu;
-    }
 
-    public void setSuperiorMenu(String superiorMenu) {
-        this.superiorMenu = superiorMenu;
-    }
+  public String getSuperiorMenu() {
+    return superiorMenu;
+  }
 
-    public String getMenuUrl() {
-        return menuUrl;
-    }
+  public void setSuperiorMenu(String superiorMenu) {
+    this.superiorMenu = superiorMenu;
+  }
 
-    public void setMenuUrl(String menuUrl) {
-        this.menuUrl = menuUrl;
-    }
+  public String getMenuUrl() {
+    return menuUrl;
+  }
 
-    public Integer getMenuSerial() {
-        return menuSerial;
-    }
+  public void setMenuUrl(String menuUrl) {
+    this.menuUrl = menuUrl;
+  }
 
-    public void setMenuSerial(Integer menuserial) {
-        this.menuSerial = menuserial;
-    }
+  public Integer getMenuSerial() {
+    return menuSerial;
+  }
 
-    public String getCreateUser() {
-        return createUser;
-    }
+  public void setMenuSerial(Integer menuserial) {
+    this.menuSerial = menuserial;
+  }
 
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser;
-    }
+  public String getCreateUser() {
+    return createUser;
+  }
 
-    public String getUpdateUser() {
-        return updateUser;
-    }
+  public void setCreateUser(String createUser) {
+    this.createUser = createUser;
+  }
 
-    public void setUpdateUser(String updateUser) {
-        this.updateUser = updateUser;
-    }
+  public String getUpdateUser() {
+    return updateUser;
+  }
 
-    public String getInsertTime() {
-        return insertTime;
-    }
+  public void setUpdateUser(String updateUser) {
+    this.updateUser = updateUser;
+  }
 
-    public void setInsertTime(String insertTime) {
-        this.insertTime = insertTime;
-    }
+  public String getInsertTime() {
+    return insertTime;
+  }
 
-    public Byte getIsActive() {
-        return isActive;
-    }
+  public void setInsertTime(String insertTime) {
+    this.insertTime = insertTime;
+  }
 
-    public void setIsActive(Byte isActive) {
-        this.isActive = isActive;
-    }
+  public Byte getIsActive() {
+    return isActive;
+  }
 
-    public String getUpdateTime() {
-        return updateTime;
-    }
+  public void setIsActive(Byte isActive) {
+    this.isActive = isActive;
+  }
 
-    public void setUpdateTime(String updateTime) {
-        this.updateTime = updateTime;
-    }
+  public String getUpdateTime() {
+    return updateTime;
+  }
 
-    public Integer getPkMenuId() {
-        return pkMenuId;
-    }
+  public void setUpdateTime(String updateTime) {
+    this.updateTime = updateTime;
+  }
 
-    public void setPkMenuId(Integer pkMenuId) {
-        this.pkMenuId = pkMenuId;
-    }
+  public Integer getPkMenuId() {
+    return pkMenuId;
+  }
 
-    public MenuDto() {
-    }
+  public void setPkMenuId(Integer pkMenuId) {
+    this.pkMenuId = pkMenuId;
+  }
 
-    public MenuDto(String menuCode, String menuName, String superiorMenu, String menuUrl,String menuIcon, Integer menuSerial) {
-        this.menuCode = menuCode;
-        this.menuName = menuName;
-        this.superiorMenu = superiorMenu;
-        this.menuUrl = menuUrl;
-        this.menuIcon = menuIcon;
-        this.menuSerial = menuSerial;
-    }
+  public MenuDto() {}
 
-    public MenuDto(Integer pkMenuId, String menuCode, String menuName, String superiorMenu, String menuUrl, Integer menuSerial, String createUser, String updateUser, String insertTime, String updateTime, Byte isActive) {
-        this.pkMenuId = pkMenuId;
-        this.menuCode = menuCode;
-        this.menuName = menuName;
-        this.superiorMenu = superiorMenu;
-        this.menuUrl = menuUrl;
-        this.menuSerial = menuSerial;
-        this.createUser = createUser;
-        this.updateUser = updateUser;
-        this.insertTime = insertTime;
-        this.updateTime = updateTime;
-        this.isActive = isActive;
-    }
+  public MenuDto(String menuCode, String menuName, String superiorMenu, String menuUrl,
+      String menuIcon, Integer menuSerial) {
+    this.menuCode = menuCode;
+    this.menuName = menuName;
+    this.superiorMenu = superiorMenu;
+    this.menuUrl = menuUrl;
+    this.menuIcon = menuIcon;
+    this.menuSerial = menuSerial;
+  }
 
-    public List<MenuDto> getChildren() {
-        return children;
-    }
+  public MenuDto(Integer pkMenuId, String menuCode, String menuName, String superiorMenu,
+      String menuUrl, Integer menuSerial, String createUser, String updateUser, String insertTime,
+      String updateTime, Byte isActive) {
+    this.pkMenuId = pkMenuId;
+    this.menuCode = menuCode;
+    this.menuName = menuName;
+    this.superiorMenu = superiorMenu;
+    this.menuUrl = menuUrl;
+    this.menuSerial = menuSerial;
+    this.createUser = createUser;
+    this.updateUser = updateUser;
+    this.insertTime = insertTime;
+    this.updateTime = updateTime;
+    this.isActive = isActive;
+  }
 
-    public void setChildren(List<MenuDto> children) {
-        this.children = children;
-    }
+  public List<MenuDto> getChildren() {
+    return children;
+  }
+
+  public void setChildren(List<MenuDto> children) {
+    this.children = children;
+  }
 }

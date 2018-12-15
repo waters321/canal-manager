@@ -1,67 +1,68 @@
 package com.ppdai.canalmate.api.model.canal.server;
 
-/*不对应任何表，只是包装对象，给前端展示
+/*
+ * 不对应任何表，只是包装对象，给前端展示
  * 
- * */
-public class CanalServerStatus{
-    private String canalServerType;
+ */
+public class CanalServerStatus {
+  private String canalServerType;
 
-    private String canalHome;
+  private String canalHome;
 
-    private String canalServerName;
+  private String canalServerName;
 
-    private String addressPort;
+  private String addressPort;
 
-    private String color;
-    
-    private String comment;
+  private String color;
 
-	public String getComment() {
-		return comment;
-	}
+  private String comment;
 
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
+  public String getComment() {
+    return comment;
+  }
 
-	public String getCanalServerType() {
-		return canalServerType;
-	}
+  public void setComment(String comment) {
+    this.comment = comment;
+  }
 
-	public void setCanalServerType(String canalServerType) {
-		this.canalServerType = canalServerType;
-	}
+  public String getCanalServerType() {
+    return canalServerType;
+  }
 
-	public String getCanalHome() {
-		return canalHome;
-	}
+  public void setCanalServerType(String canalServerType) {
+    this.canalServerType = canalServerType;
+  }
 
-	public void setCanalHome(String canalHome) {
-		this.canalHome = canalHome;
-	}
+  public String getCanalHome() {
+    return canalHome;
+  }
 
-	public String getCanalServerName() {
-		return canalServerName;
-	}
+  public void setCanalHome(String canalHome) {
+    this.canalHome = canalHome;
+  }
 
-	public void setCanalServerName(String canalServerName) {
-		this.canalServerName = canalServerName;
-	}
+  public String getCanalServerName() {
+    return canalServerName;
+  }
 
-	public String getAddressPort() {
-		return addressPort;
-	}
+  public void setCanalServerName(String canalServerName) {
+    this.canalServerName = canalServerName;
+  }
 
-	public void setAddressPort(String addressPort) {
-		this.addressPort = addressPort;
-	}
+  public String getAddressPort() {
+    return addressPort;
+  }
 
-	public String getColor() {
-		return color;
-	}
+  public void setAddressPort(String addressPort) {
+    this.addressPort = addressPort;
+  }
 
-	public void setColor(String color) {
-		this.color = color;
-	}
+  public String getColor() {
+    return color;
+  }
+
+  public void setColor(String color) {
+    this.color = color;
+  }
 
 }

@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class Sender {
 
-    private static final Logger LOG = LoggerFactory.getLogger(Sender.class);
+  private static final Logger LOG = LoggerFactory.getLogger(Sender.class);
 
-    @Autowired
-    private KafkaTemplate<String, String> kafkaTemplate;
+  @Autowired
+  private KafkaTemplate<String, String> kafkaTemplate;
 
-    public void send(String topic,String key,String entryInfo){
-        LOG.info("sending message='{}' to topic='{}'", entryInfo, topic);
-        kafkaTemplate.send(topic, key, entryInfo);
-    }
+  public void send(String topic, String key, String entryInfo) {
+    LOG.info("sending message='{}' to topic='{}'", entryInfo, topic);
+    kafkaTemplate.send(topic, key, entryInfo);
+  }
 }

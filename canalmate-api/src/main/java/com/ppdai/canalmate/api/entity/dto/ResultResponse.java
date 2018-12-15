@@ -3,53 +3,52 @@ package com.ppdai.canalmate.api.entity.dto;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
-/** 
-* 
-* @author yanxd 
-*/
+/**
+ * 
+ * @author yanxd
+ */
 public class ResultResponse {
 
-	private Boolean succeed;
-	
-	private String reCode;
-	private String rsMsg;
+  private Boolean succeed;
 
-	public Boolean isSucceed() {
-		return succeed;
-	}
+  private String reCode;
+  private String rsMsg;
 
-	public void setSucceed(Boolean succeed) {
-		this.succeed = succeed;
-	}
+  public Boolean isSucceed() {
+    return succeed;
+  }
 
-	public String getReCode() {
-		return reCode;
-	}
+  public void setSucceed(Boolean succeed) {
+    this.succeed = succeed;
+  }
 
-	public void setReCode(String reCode) {
-		this.reCode = reCode;
-	}
+  public String getReCode() {
+    return reCode;
+  }
 
-	public String getRsMsg() {
-		return rsMsg;
-	}
+  public void setReCode(String reCode) {
+    this.reCode = reCode;
+  }
 
-	public void setRsMsg(String rsMsg) {
-		this.rsMsg = rsMsg;
-	}
+  public String getRsMsg() {
+    return rsMsg;
+  }
 
-	public ResultResponse() {
-	}
+  public void setRsMsg(String rsMsg) {
+    this.rsMsg = rsMsg;
+  }
 
-	public ResultResponse(boolean succeed, String reCode, String rsMsg) {
-		super();
-		this.succeed = succeed;
-		this.reCode = reCode;
-		this.rsMsg = rsMsg;
-	}
+  public ResultResponse() {}
 
-	@Override
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
-	}
+  public ResultResponse(boolean succeed, String reCode, String rsMsg) {
+    super();
+    this.succeed = succeed;
+    this.reCode = reCode;
+    this.rsMsg = rsMsg;
+  }
+
+  @Override
+  public String toString() {
+    return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+  }
 }

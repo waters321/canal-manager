@@ -4,51 +4,47 @@ import java.io.Serializable;
 
 public class Schema implements Serializable {
 
-    private static final long serialVersionUID = 4L;
-    String name;
-    boolean isKey;
-    boolean isNull;
-    String type;
+  private static final long serialVersionUID = 4L;
+  String name;
+  boolean isKey;
+  boolean isNull;
+  String type;
 
-    public String getName() {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public boolean isKey() {
-        return isKey;
-    }
+  public boolean isKey() {
+    return isKey;
+  }
 
-    public void setKey(boolean key) {
-        isKey = key;
-    }
+  public void setKey(boolean key) {
+    isKey = key;
+  }
 
-    public boolean isNull() {
-        return isNull;
-    }
+  public boolean isNull() {
+    return isNull;
+  }
 
-    public void setNull(boolean aNull) {
-        isNull = aNull;
-    }
+  public void setNull(boolean aNull) {
+    isNull = aNull;
+  }
 
-    public String getType() {
-        return type;
-    }
+  public String getType() {
+    return type;
+  }
 
-    public void setType(String type) {
-        this.type = type;
-    }
+  public void setType(String type) {
+    this.type = type;
+  }
 
-    @Override
-    public String toString() {
-        return "Schema{" +
-                "name='" + name + '\'' +
-                ", isKey=" + isKey +
-                ", isNull=" + isNull +
-                ", type='" + type + '\'' +
-                '}';
-    }
+  @Override
+  public String toString() {
+    return "Schema{" + "name='" + name + '\'' + ", isKey=" + isKey + ", isNull=" + isNull
+        + ", type='" + type + '\'' + '}';
+  }
 }

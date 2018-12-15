@@ -3,21 +3,13 @@ package com.ppdai.canalmate.common.utils;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *
- * @auther weitong 2018-05-09
- */
-
-
 public class ServiceUtil {
 
   private static String osuser = PropertiesUtils.getValue("osuser");
   private static String passwd = PropertiesUtils.getValue("passwd");
   private static Integer port = Integer.parseInt(PropertiesUtils.getValue("port"));
 
-  private ServiceUtil() {
-    System.out.println("init ~~~~~~~~~~~~~");
-  }
+  private ServiceUtil() {}
 
   /**
    * 获取返回结果
@@ -87,9 +79,8 @@ public class ServiceUtil {
     FileUtil.writeFile(fileName, configuration, false);
     // 把临时文件scp到目标机器的指定目录，这个要求canalMate的节点与所有的host免密登录
     String cmd = "scp -P " + port + " " + fileName + " " + osuser + "@" + host + ":" + home;
-    
+
     Map<String, Object> resMap = LocalShellExecutor.executeShell(cmd);
-    System.out.println(resMap);
     Integer ret = (Integer) resMap.get("ret");
     if (ret == 0) {
       result = true;

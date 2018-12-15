@@ -12,17 +12,17 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 public class Application extends SpringBootServletInitializer {
 
-    public static void main(String[] args) {
-    	ApplicationContext ctx=SpringApplication.run(Application.class, args);
-    	String[] activeProfiles=ctx.getEnvironment().getActiveProfiles();
-    	for (String profile : activeProfiles) {
-            System.out.printf("Spring Boot 使用profile为:{}" , profile);  
-        }
+  public static void main(String[] args) {
+    ApplicationContext ctx = SpringApplication.run(Application.class, args);
+    String[] activeProfiles = ctx.getEnvironment().getActiveProfiles();
+    for (String profile : activeProfiles) {
+      System.out.printf("Spring Boot 使用profile为:{}", profile);
     }
+  }
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(this.getClass());
-    }
+  @Override
+  protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+    return builder.sources(this.getClass());
+  }
 }
 
