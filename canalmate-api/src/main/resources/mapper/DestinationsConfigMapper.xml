@@ -41,7 +41,9 @@
   <select id="selectDestinationDeployInfo" parameterType="java.lang.String" resultType="java.util.Map">
     select csc.canal_home as canalHome
     ,csc.canal_server_host as canalServerHost
+    ,csc.canal_server_port as canalServerPort
     ,csc.standby_server_host as standbyServerHost
+    ,csc.standby_server_port as standbyServerPort
     ,dc.destination_configuration as destinationConfiguration
     ,dc.standby_configuration as standbyConfiguration
     from canal_server_config csc

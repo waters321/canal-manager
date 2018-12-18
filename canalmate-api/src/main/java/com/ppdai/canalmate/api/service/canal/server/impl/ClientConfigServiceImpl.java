@@ -47,21 +47,13 @@ public class ClientConfigServiceImpl implements ClientConfigService {
         + "/bin/startup.sh " + clientName;
     Map<String, Object> resMap = new HashMap<>();
     if ("master".equals(type)) {
-      RmtShellExecutor exe = new RmtShellExecutor(host, "hadoop", "hadoop", 23245);
+      RmtShellExecutor exe = new RmtShellExecutor(host, 23245);
       try {
         resMap = exe.exec(startClientCmd);
       } catch (Exception e) {
         e.printStackTrace();
       }
     }
-    // else if (type.equals("standby")){
-    // RmtShellExecutor exe = new RmtShellExecutor(standbyServerHost, "hadoop", "hadoop",23245);
-    // try {
-    // resMap = exe.exec(startCanalCmd);
-    // } catch (IOException e) {
-    // e.printStackTrace();
-    // }
-    // }
     return resMap;
   }
 
@@ -73,21 +65,13 @@ public class ClientConfigServiceImpl implements ClientConfigService {
     String stopClientCmd = "/bin/bash " + path + "/bin/stop.sh " + clientName;
     Map<String, Object> resMap = new HashMap<>();
     if ("master".equals(type)) {
-      RmtShellExecutor exe = new RmtShellExecutor(host, "hadoop", "hadoop", 23245);
+      RmtShellExecutor exe = new RmtShellExecutor(host, 23245);
       try {
         resMap = exe.exec(stopClientCmd);
       } catch (Exception e) {
         e.printStackTrace();
       }
     }
-    // else if (type.equals("standby")){
-    // RmtShellExecutor exe = new RmtShellExecutor(standbyServerHost, "hadoop", "hadoop",23245);
-    // try {
-    // resMap = exe.exec(startCanalCmd);
-    // } catch (IOException e) {
-    // e.printStackTrace();
-    // }
-    // }
     return resMap;
 
   }

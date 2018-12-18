@@ -34,9 +34,9 @@ public class LocalShellExecutor {
   }
 
   public static Map<String, Object> executeShell(String shellCommand) {
-    logger.info("===将要在本地执行的shellCommand:" + shellCommand);
+    logger.info("将要在本地执行的shellCommand:" + shellCommand);
     if (!checkCommand(shellCommand)) {
-      logger.error("===将要在本地执行的shellCommand没通过白名单检查，命令为：" + shellCommand);
+      logger.error("将要在本地执行的shellCommand没通过白名单检查，命令为：" + shellCommand);
     }
     int success = -1;// 如果脚本执行的返回值不是0,则表示脚本执行失败，否则（值为0）脚本执行成功。0:成功，非0：失败
     StringBuffer stringBuffer = new StringBuffer();

@@ -13,8 +13,6 @@ public class CanalPropertyUtils {
 
 
   public static String getPropertyValueByKey(String configProperty, String key) {
-    // P.p(configProperty);
-    // P.p("key:"+key);
     InputStream inStream =
         new ByteArrayInputStream(configProperty.getBytes(StandardCharsets.UTF_8));
     Properties prop = new Properties();

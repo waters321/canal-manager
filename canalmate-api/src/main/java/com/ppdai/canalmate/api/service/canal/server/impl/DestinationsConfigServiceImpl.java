@@ -1,13 +1,13 @@
 package com.ppdai.canalmate.api.service.canal.server.impl;
 
+import java.util.Map;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import com.ppdai.canalmate.api.dao.canal.server.DestinationsConfigMapper;
 import com.ppdai.canalmate.api.model.canal.server.DestinationsConfig;
 import com.ppdai.canalmate.api.service.canal.server.DestinationsConfigService;
 import com.ppdai.canalmate.common.utils.ServiceUtil;
-import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import java.util.Map;
 
 @Service(value = "DestinationsConfigService")
 public class DestinationsConfigServiceImpl implements DestinationsConfigService {
@@ -43,11 +43,12 @@ public class DestinationsConfigServiceImpl implements DestinationsConfigService 
     Map<String, Object> map = destinationsConfigMapper.selectDestinationDeployInfo(destinationName);
     String canalHome = (String) map.get("canalHome");
     String canalServerHost = (String) map.get("canalServerHost");
+    String canalServerPort = (String) map.get("canalServerPort");
     String standbyServerHost = (String) map.get("standbyServerHost");
+    String standbyServerPort = (String) map.get("standbyServerPort");
     String destinationConfiguration = (String) map.get("destinationConfiguration");
     String standbyConfiguration = (String) map.get("standbyConfiguration");
 
-    //
     String fileName = "/tmp/" + destinationName + "." + "instance.properties";
     String fileNameStandby = "/tmp/" + destinationName + "." + "instance.standby.properties";
     String aimPath = canalHome + "/conf/" + destinationName;
@@ -55,20 +56,22 @@ public class DestinationsConfigServiceImpl implements DestinationsConfigService 
     String deployPathStandby = aimPath + "/instance.properties";
 
 
-    ServiceUtil.prepareRemoteDir(canalServerHost, aimPath);
-    ServiceUtil.prepareRemoteDir(standbyServerHost, aimPath);
+    ServiceUtil.prepareRemoteDir(canalServerHost, canalServerPort, aimPath);
+    ServiceUtil.prepareRemoteDir(standbyServerHost, standbyServerPort, aimPath);
 
 
     if (StringUtils.isNotBlank(standbyServerHost) && StringUtils.isNotBlank(standbyConfiguration)) {
-      if (ServiceUtil.scpFile(fileName, destinationConfiguration, canalServerHost, deployPath)
+      if (ServiceUtil.scpFile(fileName, destinationConfiguration, canalServerHost, canalServerPort,
+          deployPath)
           && ServiceUtil.scpFile(fileNameStandby, standbyConfiguration, standbyServerHost,
-              deployPathStandby)) {
+              standbyServerPort, deployPathStandby)) {
         return true;
       } else {
         return false;
       }
     } else {
-      return ServiceUtil.scpFile(fileName, destinationConfiguration, canalServerHost, deployPath);
+      return ServiceUtil.scpFile(fileName, destinationConfiguration, canalServerHost,
+          canalServerPort, deployPath);
     }
 
 

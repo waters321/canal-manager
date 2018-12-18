@@ -17,6 +17,13 @@ public class PropertiesUtils {
       in = PropertiesUtils.class.getResourceAsStream("/conf.properties");
       properties.load(in);
 
+      properties.forEach((key, value) -> {
+        if (value != null) {
+          keyValues.put(key.toString(), value.toString());
+        }
+      });
+
+
       String osuser = properties.getProperty("osuser");
       String passwd = properties.getProperty("passwd");
       String port = properties.getProperty("port");

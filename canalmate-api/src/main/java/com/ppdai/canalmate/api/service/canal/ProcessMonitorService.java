@@ -94,14 +94,14 @@ public class ProcessMonitorService {
 
   }
 
-  public Map<String,Object> listCanalServerConfig(Map<String, String> argsMap) {
+  public Map<String, Object> listCanalServerConfig(Map<String, String> argsMap) {
     String canalServerName = argsMap.get("canal_server_name");
     String canalServerHost = argsMap.get("canal_server_host");
     Integer pageNum = Integer.parseInt(argsMap.get("pageNum"));
     Integer numberPerPage = Integer.parseInt(argsMap.get("numberPerPage"));
     Integer start = (pageNum - 1) * numberPerPage;// mysql的索引从0开始
     Integer offset = numberPerPage;// mysql的索引从0开始
-    Map<String,Object> result = new HashMap<String,Object>();
+    Map<String, Object> result = new HashMap<String, Object>();
 
     // 拼接sql
     String temp =
@@ -346,13 +346,10 @@ public class ProcessMonitorService {
       // 找到该server集群下有几台canal server运行
       String zkAddress = CanalPropertyUtils.getPropertyValueByKey(
           canalServerConfig.getCanalServerConfiguration(), "canal.zkServers");
-      // P.pr("zkAddress:"+zkAddress);
-      System.out.println(zkAddress);
       List<String> ipAndPortList = CanalZKUtils.getZKCanalServerListFromZKAddress(zkAddress);
       Set<String> canalServerIpSet = new HashSet<String>();
       for (String ipAndPort : ipAndPortList) {
         String ip = ipAndPort.split(":")[0];
-        // P.pr(" canalServerIpSet ,zk canal server ip:"+ip);
         canalServerIpSet.add(ip);
       }
       // 得到该master的canal.ip，先从配置文件取
@@ -368,7 +365,6 @@ public class ProcessMonitorService {
         standbyCanalIp = canalServerConfig.getStandbyServerHost();
       }
 
-      // P.pr("master IP："+master_canal_ip+",standby_canal_ip:"+standby_canal_ip);
       // 判断master是否运行，主要是设置StatusCode
       if (canalServerIpSet.contains(masterCanalIp)) {
         logger.debug("master RUNNING");
@@ -396,27 +392,4 @@ public class ProcessMonitorService {
     return canalServerConfigShowList;
 
   }
-
-
-
-  // /*
-  // * 查询canalServer的配置文件，根据属性名，得到属性值。会先查数据库，然后正则提取。
-  // * */
-  // public String getCanalServerPropertyByKey(Long id,String key) {
-  //
-  // CanalServerConfig canalServerConfig=selectCanalServerConfigByPrimaryKey(id);
-  // String configProperty=canalServerConfig.getCanalServerConfiguration();
-  //// P.p(configProperty);
-  //// P.p("key:"+key);
-  // Pattern p = Pattern.compile("(.*?)"+key+"(.*?)=(.*?)\r");
-  // Matcher m = p.matcher(configProperty);
-  // StringBuilder strs = new StringBuilder();
-  // while (m.find()) {
-  // String line=m.group(3).trim();
-  // strs.append(line);
-  // }
-  //
-  // return strs.toString();
-  // }
-
 }

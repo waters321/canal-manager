@@ -17,8 +17,10 @@ import com.ppdai.canalmate.api.service.canal.server.CanalServerConfigService;
 import com.ppdai.canalmate.common.utils.Node;
 import com.ppdai.canalmate.common.utils.RmtShellExecutor;
 import com.ppdai.canalmate.common.utils.ServiceUtil;
+import lombok.extern.slf4j.Slf4j;
 
 @Service(value = "CanalServerConfigService")
+@Slf4j
 public class CanalServerConfigServiceImpl implements CanalServerConfigService {
 
   @Autowired
@@ -100,22 +102,28 @@ public class CanalServerConfigServiceImpl implements CanalServerConfigService {
     CanalServerConfig deployInfo = canalServerConfigMapper.selectDeployInfo(canalServerName);
     String canalHome = deployInfo.getCanalHome();
     String canalServerHost = deployInfo.getCanalServerHost();
+    String canalServerPort = deployInfo.getCanalServerPort();
     String standbyServerHost = deployInfo.getStandbyServerHost();
+    String standbyServerPort = deployInfo.getStandbyServerPort();
     String startCanalCmd =
         "export PATH=$PATH:/usr/local/java/bin && /bin/bash " + canalHome + "/bin/startup.sh";
     Map<String, Object> resMap = new HashMap<>();
     if ("master".equals(type)) {
-      RmtShellExecutor exe = new RmtShellExecutor(canalServerHost, "hadoop", "hadoop", 23245);
+      RmtShellExecutor exe =
+          new RmtShellExecutor(canalServerHost, Integer.parseInt(canalServerPort));
       try {
         resMap = exe.exec(startCanalCmd);
       } catch (Exception e) {
+        log.error("远程服务器连接失败");
         e.printStackTrace();
       }
     } else if ("standby".equals(type)) {
-      RmtShellExecutor exe = new RmtShellExecutor(standbyServerHost, "hadoop", "hadoop", 23245);
+      RmtShellExecutor exe =
+          new RmtShellExecutor(standbyServerHost, Integer.parseInt(standbyServerPort));
       try {
         resMap = exe.exec(startCanalCmd);
       } catch (Exception e) {
+        log.error("远程服务器连接失败");
         e.printStackTrace();
       }
     }
@@ -128,18 +136,22 @@ public class CanalServerConfigServiceImpl implements CanalServerConfigService {
     CanalServerConfig deployInfo = canalServerConfigMapper.selectDeployInfo(canalServerName);
     String canalHome = deployInfo.getCanalHome();
     String canalServerHost = deployInfo.getCanalServerHost();
+    String canalServerPort = deployInfo.getCanalServerPort();
     String standbyServerHost = deployInfo.getStandbyServerHost();
+    String standbyServerPort = deployInfo.getStandbyServerPort();
     String startCanalCmd = "/bin/bash " + canalHome + "/bin/stop.sh";
     Map<String, Object> resMap = new HashMap<>();
     if ("master".equals(type)) {
-      RmtShellExecutor exe = new RmtShellExecutor(canalServerHost, "hadoop", "hadoop", 23245);
+      RmtShellExecutor exe =
+          new RmtShellExecutor(canalServerHost, Integer.parseInt(canalServerPort));
       try {
         resMap = exe.exec(startCanalCmd);
       } catch (Exception e) {
         e.printStackTrace();
       }
     } else if ("standby".equals(type)) {
-      RmtShellExecutor exe = new RmtShellExecutor(standbyServerHost, "hadoop", "hadoop", 23245);
+      RmtShellExecutor exe =
+          new RmtShellExecutor(standbyServerHost, Integer.parseInt(standbyServerPort));
       try {
         resMap = exe.exec(startCanalCmd);
       } catch (Exception e) {
@@ -158,8 +170,10 @@ public class CanalServerConfigServiceImpl implements CanalServerConfigService {
     CanalServerConfig deployInfo = canalServerConfigMapper.selectDeployInfo(canalServerName);
     String canalHome = deployInfo.getCanalHome();
     String canalServerHost = deployInfo.getCanalServerHost();
+    String canalServerPort = deployInfo.getCanalServerPort();
     String canalServerConfiguration = deployInfo.getCanalServerConfiguration();
     String standbyServerHost = deployInfo.getStandbyServerHost();
+    String standbyServerPort = deployInfo.getStandbyServerPort();
     String standbyServerConfiguration = deployInfo.getStandbyServerConfiguration();
 
     // 配置文件对应变量
@@ -171,15 +185,17 @@ public class CanalServerConfigServiceImpl implements CanalServerConfigService {
     // 先在canalMate本地/tmp目录生成配置文件,再把该文件配置scp到canal服务器的conf目录下
     if (StringUtils.isNotBlank(standbyServerHost)
         && StringUtils.isNotBlank(standbyServerConfiguration)) {
-      if (ServiceUtil.scpFile(fileName, canalServerConfiguration, canalServerHost, deployHome)
+      if (ServiceUtil.scpFile(fileName, canalServerConfiguration, canalServerHost, canalServerPort,
+          deployHome)
           && ServiceUtil.scpFile(fileNameStandby, standbyServerConfiguration, standbyServerHost,
-              deployHomeStandby)) {
+              standbyServerPort, deployHomeStandby)) {
         return true;
       } else {
         return false;
       }
     } else {
-      return ServiceUtil.scpFile(fileName, canalServerConfiguration, canalServerHost, deployHome);
+      return ServiceUtil.scpFile(fileName, canalServerConfiguration, canalServerHost,
+          canalServerPort, deployHome);
     }
 
   }

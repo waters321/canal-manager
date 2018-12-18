@@ -6,8 +6,6 @@ import java.util.Map;
 public class ServiceUtil {
 
   private static String osuser = PropertiesUtils.getValue("osuser");
-  private static String passwd = PropertiesUtils.getValue("passwd");
-  private static Integer port = Integer.parseInt(PropertiesUtils.getValue("port"));
 
   private ServiceUtil() {}
 
@@ -51,10 +49,10 @@ public class ServiceUtil {
   }
 
   // 创建远程机器的文件夹
-  public static boolean prepareRemoteDir(String rmtHost, String rmtDir) {
+  public static boolean prepareRemoteDir(String rmtHost, String port, String rmtDir) {
     boolean result = false;
     String mkDir = "mkdir -p " + rmtDir;
-    RmtShellExecutor exe = new RmtShellExecutor(rmtHost, osuser, passwd, port);
+    RmtShellExecutor exe = new RmtShellExecutor(rmtHost, Integer.parseInt(port));
     Map<String, Object> resMap = new HashMap<String, Object>();
     try {
       resMap = exe.exec(mkDir);
@@ -72,7 +70,8 @@ public class ServiceUtil {
     return result;
   }
 
-  public static boolean scpFile(String fileName, String configuration, String host, String home) {
+  public static boolean scpFile(String fileName, String configuration, String host, String port,
+      String home) {
     boolean result = false;
 
     // 先在本地生成临时文件

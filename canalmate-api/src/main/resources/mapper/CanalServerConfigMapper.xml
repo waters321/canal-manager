@@ -51,8 +51,8 @@
   </select>
   <select id="selectDeployInfo" parameterType="java.lang.String" resultType="com.ppdai.canalmate.api.model.canal.server.CanalServerConfig">
     select canal_home as canalHome
-    ,canal_server_host as canalServerHost,canal_server_configuration as canalServerConfiguration
-    ,standby_server_host as standbyServerHost,standby_server_configuration as standbyServerConfiguration
+    ,canal_server_host as canalServerHost,canal_server_port as canalServerPort,canal_server_configuration as canalServerConfiguration
+    ,standby_server_host as standbyServerHost,standby_server_port as standbyServerPort,standby_server_configuration as standbyServerConfiguration
     from canal_server_config
     where canal_server_name=#{canalServerName,jdbcType=VARCHAR}
   </select>
